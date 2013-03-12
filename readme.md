@@ -32,3 +32,4 @@
 + continue explore interaction between D3 and Leaflet
 + finish the legend component using the Reusable Chart pattern
 + visualize another dataset which shows bike usage by hour
+
