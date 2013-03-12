@@ -17,7 +17,7 @@
 + Convert GeoJSON files to TopoJSON using command line. (note TopoJSON can take shape file as input, but there seems to be a bug for multiPolygon features)
 ****
 
-### [Live Demo]
+### [Live Demo](http://xqin1.github.com/bikeshare/bike1.html)
 
 ****
 
