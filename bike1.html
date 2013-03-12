@@ -221,6 +221,8 @@ function updateBikeLocation(type){
                     .attr("r", function(d) { return radius(d[type])})
           //.on("mouseover",function(d,i) {return showPieChart(d.properties,d.geometry)})
           //.on("mouseout", hidePieChart)
+  locationsL.append("svg:title")
+        .text(function(d) { return d.properties.ADDRESS; }); 
   locationExitL = d3.transition(locationsL.exit()).remove();
     
     lmap.on("viewreset", reset);
