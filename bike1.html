@@ -383,7 +383,13 @@ function ready(error, dc,bike,terminalcount) {
   text += " where " + format(bikeLocCheckInOrder[bikeLocCheckInOrder.length-1].checkin) + " number of times bikes being checked."
   text += " The least checkin station is at <a href='#' class='g-link' id='" + bikeLocCheckInOrder[0].id +
           "'>" + bikeLocCheckInOrder[0].properties.ADDRESS + "</a>,";
-  text += " where only " + format(bikeLocCheckInOrder[0].checkin) + " trips being ended there. "
+  text += " where only " + format(bikeLocCheckInOrder[0].checkin) + " trips being ended there. ";
+
+  text += " During rush hours (7-9am, 4-6pm), <a href='#' class='g-link' id='31623'>Columbus Circle / Union Station</a> ";
+  text += " is the champion as most bikes being both checked-in and checked-out. "
+   text += "For midnight hour (12am-1am), most bikes being checkout-out at <a href='#' class='g-link' id='31111'>10th & U St NW</a>, ";
+  text += " and checked-in at <a href='#' class='g-link' id='31101'>14th & V St NW</a>.";
+  
 
 
   $(".g-annotation").html(text);
