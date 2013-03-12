@@ -33,3 +33,6 @@
 + finish the legend component using the Reusable Chart pattern
 + visualize another dataset which shows bike usage by hour
 
+****
+#Many thanks to Mike and Eric for organizing this event... Also to my [little Eva](http://xqin1.github.com/bikeshare/img/eva.png) for allowing me sleeping during the night.
+
