@@ -238,8 +238,17 @@ function updateBikeLocation(type){
         .style("margin-top", topRight[1] + "px");
 
     g.attr("transform", "translate(" + -bottomLeft[0] + "," + -topRight[1] + ")");
-d3.transition(locationsL)
+    d3.transition(locationsL)
                     .attr("class", "circle")
+                    .attr("transform", function(d) {
+                          var centroid = project(d.coordinates)
+                          x = centroid[0];
+                          y = centroid[1];
+                          return "translate(" + x + "," + y + ")";
+                    })
+   
+    g.selectAll(".pulse_circle")
+                    .attr("class", "pulse_circle")
                     .attr("transform", function(d) {
                           var centroid = project(d.coordinates)
                           x = centroid[0];
@@ -278,11 +287,12 @@ bounds=d3.geo.bounds(dcBoundary);
 
 
 function highlight(terminalid){
-  console.log(terminalid);
+  //console.log(terminalid);
   var selectedNode = bikeLoc1.filter(function(d){
           return d.id == terminalid;
       })
-  console.log(selectedNode);
+ // console.log(selectedNode);
+   lmap.setView(new L.LatLng(selectedNode[0].coordinates[1],selectedNode[0].coordinates[0]),17);
   map.selectAll(".pulse_circle").data(selectedNode)
                 .enter().append("circle")
                     .attr("class", "pulse_circle")
@@ -292,11 +302,29 @@ function highlight(terminalid){
                           y = centroid[1];
                           return "translate(" + x + "," + y + ")";
                     })
-                    .each(pulse())
+                    .each(pulse());
+
+  //lmap.setView(selectedNode[0].coordinates[1],selectedNode[0].coordinates[0]);
+  //lmap.setView(new L.LatLng(selectedNode[0].coordinates[1],selectedNode[0].coordinates[0]),17);
+  //reset();
+   g.selectAll(".pulse_circle").data(selectedNode)
+                .enter().append("circle")
+                    .attr("class", "pulse_circle")
+                    .attr("transform", function(d) {
+                          var centroid = project(d.coordinates)
+                          x = centroid[0];
+                          y = centroid[1];
+                          return "translate(" + x + "," + y + ")";
+                    })
+                    .each(pulse());
+
 }
 
 function removeHighlight(){
   d3.selectAll(".pulse_circle").remove();
+  lmap.setView(new L.LatLng(38.9, -77.01),12);
+  //reset();
+
 }
 
 function pulse() {
